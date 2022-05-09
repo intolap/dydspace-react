@@ -1,61 +1,99 @@
-import React from 'react'
+import React, { useState, useEffect }  from 'react';
+import jQuery from 'jquery';
+
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 export default function Slider() {
-  return (
-    <div>
-        <div className="wrapper">
-            <div className="content-holder"> 
-                <div className="fs-gallery-wrap home-slider fl-wrap full-height">
-                    <div className="slide-progress-container">
-                        <div className="slide-progress-content">
-                        <div className="slide-progress-warp">
-                            <div className="slide-progress" styles="{{width: 100%; transition: width 5000ms ease 0s;}}"></div>
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [slides, setSlides] = useState();
+    
+    useEffect(() => {
+        fetch("https://dydspace.com/wp-json/wp/v2/home_slider/?_embed")
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    setIsLoaded(true);
+                    setSlides(data);
+                    // console.log(slides);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+      }, [])
+    // console.log(slides);
+    if (error) {
+        console.log(error);
+        // return <div>Error: {error.message}</div>;
+        return '';
+    } else if (!isLoaded) {
+        // console.log('Loading Slides...');
+        // return <div>Loading...</div>;
+        return '';
+    } else {
+        return (
+            <div>
+                <div className="wrapper">
+                    <div className="content-holder"> 
+                        <div className="fs-gallery-wrap home-slider fl-wrap full-height">                    
+                            <Swiper 
+                                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                                    spaceBetween={0}
+                                    slidesPerView={1}
+                                    navigation
+                                    pagination={{ clickable: true, }}
+                                    onSwiper={(swiper) => {
+                                        swiper.pagination.bullets.forEach(function(element, index, array){
+                                            jQuery(element).html(index+1);
+                                        });
+                                    }}
+                                    // onSlideChange={() => console.log('slide change')}
+                            >                                
+                                {slides.map((item, i) => {
+                                return (
+                                    <SwiperSlide className="swiper-slide swiper-slide-next" data-swiper-slide-index="{i}" key={i}>
+                                        <img src={item['_embedded']['wp:featuredmedia'][0]['source_url'].toString()} alt="" />
+                                        <div className="hero-wrap alt" >
+                                            <div className="hero-item">
+                                                <h2>{item['title']['rendered'].replace("<br/>", "\n")}</h2>
+                                            </div>
+                                        </div>
+                                    </SwiperSlide>
+                                );
+                                })}
+        
+                                <span slot="container-start"></span>
+                                <span slot="container-end"></span>
+                                <span slot="wrapper-start"></span>
+                                <span slot="wrapper-end"></span>
+                            </Swiper>  
                         </div>
-                        </div>
-                    </div>
-                    <div className="swiper-container swiper-container-horizontal" >
-                        <div className="swiper-wrapper">
-                            <div className="swiper-slide swiper-slide-next" data-swiper-slide-index="3">
-                                <div className="bg" data-bg="assets/images/slider1.jpg" data-scrollax="{{properties: { translateY:'250px' }}}" styles="{{background-image: url('assets/images/slider1.jpg');}}"></div>
-                                <div className="hero-wrap alt" >
-                                <div className="hero-item">
-                                    <h2>Design by Comfort <br/> and relaxation</h2>
-                                </div>
-                                </div>
+                        <div className="main-footer">
+                            <div className="footer-social">
+                                <ul>
+                                    <li><a href="#" target="_blank"><i className="fab fa-facebook-square"></i></a></li>
+                                    <li><a href="#" target="_blank"><i className="fab fa-twitter-square"></i></a></li>
+                                    <li><a href="#" target="_blank"><i className="fab fa-instagram-square"></i></a></li>
+                                </ul>
+                                <div className="fixed-title"><span>Follow Us</span></div>
                             </div>
-                            <div className="swiper-slide swiper-slide-next" data-swiper-slide-index="3">
-                                <div className="bg" data-bg="assets/images/slider2.jpg" data-scrollax="{{properties: { translateY:'250px' }}}" styles="{{background-image: url('assets/images/slider2.jpg');}}"></div>
-                                <div className="hero-wrap alt">
-                                <div className="hero-item">
-                                    <h2>Design by Comfort <br/> and relaxation</h2>
-                                </div>
-                                </div> 
-                            </div>                    
                         </div>
                     </div>
-                </div>
-                <div className="main-footer">
-                    <div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
-                        <span className="swiper-pagination-bullet">01</span>
-                        <span className="swiper-pagination-bullet">02</span>
-                    </div>
-                    <div className="sw-button swiper-button-next"><i className="fas fa-chevron-up"></i></div>
-                    <div className="sw-button swiper-button-prev"><i className="fas fa-chevron-down"></i></div>
-                    <div className="footer-social">
-                        <ul>
-                            <li><a href="#" target="_blank"><i className="fab fa-facebook-square"></i></a></li>
-                            <li><a href="#" target="_blank"><i className="fab fa-twitter-square"></i></a></li>
-                            <li><a href="#" target="_blank"><i className="fab fa-instagram-square"></i></a></li>
-                        </ul>
-                        <div className="fixed-title"><span>Follow Us</span></div>
-                    </div>
-                </div>
-                <div className="mobile-com">
-                    <div className="sw-button swiper-button-next"><i className="fas fa-chevron-up"></i></div>
-                    <div className="sw-button swiper-button-prev"><i className="fas fa-chevron-down"></i></div>
                 </div>
             </div>
-        </div>
-    </div>
-  )
+          );
+    }
+
+    
 }

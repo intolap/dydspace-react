@@ -5,25 +5,93 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DydSpace</title>
-
+    <meta property="og:title" content="__OG_TITLE__" />
+    <meta property="og:description" content="__OG_DESCRIPTION__" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://dydspace.com/wp-content/themes/dydspace/inc/assets/favicons/favicon-16x16.png">
+    <!-- <link rel="manifest" href="https://dydspace.com/wp-content/themes/dydspace/inc/assets/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="https://dydspace.com/wp-content/themes/dydspace/inc/assets/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff"> -->
     <!-- Latest compiled and minified CSS -->
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/style2.css" />
-    <link rel="stylesheet" href="assets/css/plugins.css" />
+    <!-- <link rel="stylesheet" href="assets/css/plugins.css" /> -->
     <link rel="stylesheet" href="assets/css/responsive.css" />
     <link rel="stylesheet" href="assets/css/twentytwenty.css" type="text/css">
-    <link href="assets/css/owl.carousel.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/owl.theme.default.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="assets/css/owl.carousel.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/owl.theme.default.min.css" rel="stylesheet" type="text/css"> -->
     <link rel="stylesheet" href="assets/css/fontawesome/css/all.css" />
     <link href="assets/css/aos.css" rel="stylesheet">
 
 
     <!-- Owl Stylesheets -->
-
+    <script src="assets/js/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <title>React App</title>
+    <style>
+        .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after,
+        .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+            content: 'prev';
+            transform: rotate(90deg);
+            color: #000;
+            font-size: 26px !important;
+            font-weight: bold;
+        }
+
+        .swiper-slide {
+            min-height: 650px;
+            height: auto;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 650px;
+            object-fit: cover;
+        }
+
+        .swiper-button-prev, .swiper-rtl .swiper-button-next {
+            top: 10% !important;
+            right: 10px  !important;
+            left: auto  !important;
+        }
+
+        .swiper-button-next, .swiper-rtl .swiper-button-prev {
+            top: 20% !important;
+        }
+
+        .swiper-pagination{
+            counter-reset: section;
+            width: 45px !important;
+            left: 1303px !important;
+        }
+
+        .swiper-pagination-bullet {
+            display: block !important;
+            border-radius: 0% !important;
+            margin-bottom: 5px !important;
+            width: 50px !important;
+            height: 2px !important;
+            padding: 0px;
+            margin-bottom: 30px !important;
+            background-color: transparent;
+            text-align: left !important;
+            font-weight: normal !important;
+        }
+
+        .swiper-pagination-bullet-active{
+            font-size: 36px;
+        }
+
+        .swiper-pagination-bullet::before {
+            counter-increment: section;
+            content: counter(section);
+        }
+
+        .swiper-pagination-bullet-active {
+            font-weight: bold;
+        }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -38,55 +106,34 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script src="assets/js/jquery.min.js"></script> 
-    <script src="assets/js/bootstrap.min.js"></script> 
-    <script src="assets/js/owl.carousel.min.js"></script> 
-    <script type="text/javascript" src="assets/js/plugins.js"></script> 
-    <script type="text/javascript" src="assets/js/scripts.js"></script> 
+    
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/plugins.js"></script> 
+    <script src="assets/js/scripts.js"></script> 
     <script src="assets/js/jquery.event.move.js"></script> 
     <script src="assets/js/jquery.twentytwenty.js"></script> 
     <script src="assets/js/aos.js"></script> 
     <script src="assets/js/easy-responsive-tabs.js"></script> 
     <script>
-      $(document).ready(function() {
-          $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
-          $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
+        $('.counter-count').each(function () {
+            $(this).prop('Counter',0).animate({
+                Counter: $(this).text()
+            }, {
+            
+                //chnage count up speed here
+                duration: 4000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            })
+        });
 
-          $('#owl-carousel-testi').owlCarousel({
-              loop:true,
-              margin:10,
-              responsiveClass:true,
-              responsive:{
-                  0:{
-                      items:1,
-                      nav:true
-                  },
-                  600:{
-                      items:1,
-                      nav:false
-                  },
-                  1000:{
-                      items:1,
-                      nav:true,
-                      loop:false
-                  }
-              }
-          });
-
-          $('.counter-count').each(function () {
-              $(this).prop('Counter',0).animate({
-                  Counter: $(this).text()
-              }, {
-              
-                  //chnage count up speed here
-                  duration: 4000,
-                  easing: 'swing',
-                  step: function (now) {
-                      $(this).text(Math.ceil(now));
-                  }
-              })
-          });
-          $('#horizontalTab').easyResponsiveTabs({
+        $(window).on("load", function(){
+            $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
+            $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
+        
+            $('#horizontalTab').easyResponsiveTabs({
               type: 'default', //Types: default, vertical, accordion           
               width: 'auto', //auto or any width like 600px
               fit: true,   // 100% fit in a container
@@ -98,96 +145,26 @@
                   $name.text($tab.text());
                   $info.show();
               }
-          });
+            });
 
-          $(".down").click(function() {
-              $('html, body').animate({
-                  scrollTop: $(".up").offset().top
-              }, 1500)
-          });
+            $(".down").click(function() {
+                $('html, body').animate({
+                    scrollTop: $(".up").offset().top
+                }, 1500)
+            });
 
-          $(".up").click(function() {
-              $('html, body').animate({
-                  scrollTop: $(".down").offset().top
-              }, 1000)
-          });
-
-          $("#layout_one").click(function(){
-              $("#one").show();
-              $("#two").hide();
-              $("#three").hide();
-              $("#four").hide();
-              $("#five").hide();
-              $("#six").hide();
-              $("#seaven").hide();
-          });
-
-          $("#layout_two").click(function(){
-              $("#one").hide();
-              $("#two").show();
-              $("#three").hide();
-              $("#four").hide();
-              $("#five").hide();
-              $("#six").hide();
-              $("#seaven").hide();
-          });
-
-          $("#layout_three").click(function(){
-              $("#one").hide();
-              $("#two").hide();
-              $("#three").show();
-              $("#four").hide();
-              $("#five").hide();
-              $("#six").hide();
-              $("#seaven").hide();
-          });
-
-          $("#layout_four").click(function(){
-              $("#one").hide();
-              $("#two").hide();
-              $("#three").hide();
-              $("#four").show();
-              $("#five").hide();
-              $("#six").hide();
-              $("#seaven").hide();
-          });
-
-          $("#layout_five").click(function(){
-              $("#one").hide();
-              $("#two").hide();
-              $("#three").hide();
-              $("#four").hide();
-              $("#five").show();
-              $("#six").hide();
-              $("#seaven").hide();
-          });
-
-          $("#layout_six").click(function(){
-              $("#one").hide();
-              $("#two").hide();
-              $("#three").hide();
-              $("#four").hide();
-              $("#five").hide();
-              $("#six").show();
-              $("#seaven").hide();
-          });
-
-          $("#layout_seaven").click(function(){
-              $("#one").hide();
-              $("#two").hide();
-              $("#three").hide();
-              $("#four").hide();
-              $("#five").hide();
-              $("#six").hide();
-              $("#seaven").show();
-          });
-      });
+            $(".up").click(function() {
+                $('html, body').animate({
+                    scrollTop: $(".down").offset().top
+                }, 1000)
+            });
+        });
       
-      function activeClass(e){
-          $('.btn-circle').removeClass('active');
-          $(e).addClass('active');
-      }
-      AOS.init();
-  </script>
+        function activeClass(e){
+            $('.btn-circle').removeClass('active');
+            $(e).addClass('active');
+        }
+        AOS.init();
+    </script>
   </body>
 </html>
