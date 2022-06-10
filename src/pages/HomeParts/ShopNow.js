@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 export default function ShopNow() {
   return (
-    <div>
+    <>
         <section className="section-about-us-3 side-bg-2" >
             <div className="image-container"></div>
             <div className="container">
@@ -17,6 +17,6 @@ export default function ShopNow() {
                 </div>
             </div>
         </section>
-    </div>
+    </>
   )
 }

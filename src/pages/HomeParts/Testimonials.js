@@ -34,51 +34,47 @@ export default function Testimonials() {
     } else {
         var striptags = require('striptags');
         return (
-            <div>
-                <section className="features-sc">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-5">
-                                <div className="st-customers"> <span>See What Our </span>
-                                    <h6>Customers are Saying</h6>
-                                </div>
-                            </div>
-                            <div className="col-md-7">
-                                <div className="testi-wraper">
-                                    <OwlCarousel className='owl-theme' id="owl-carousel-testi" responsiveClass slideBy nav responsive={{
-                                        0:{
-                                            items:1,
-                                            nav:true
-                                        },
-                                        600:{
-                                            items:1,
-                                            nav:false
-                                        },
-                                        1000:{
-                                            items:1,
-                                            nav:true,
-                                            loop:false
-                                        }
-                                    }}>
-                                        {testimonials.map((item, i) => {
-                                        return (
-                                            <div key={i} className="item">
-                                                <div className="testi-monial-sec">
-                                                    <p>{striptags(item['acf']['comment'])}</p>
-                                                    <div className="testi-icon"> <img src={(item['acf']['image']==='')?'https://picsum.photos/200/300?random='+{i}:item['acf']['image'].toString()} alt=""/> </div>
-                                                    <h6>{item['acf']['full_name']}</h6>
-                                                    <em>(Posted {item['date'].split('T')[0]})</em>
-                                                </div>
+            <section className="features-sc">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-5">
+                            <div className="st-customers"> <span>See What Our </span> <h6>Customers are Saying</h6> </div>
+                        </div>
+                        <div className="col-md-7">
+                            <div className="testi-wraper">
+                                <OwlCarousel className='owl-theme' id="owl-carousel-testi" responsiveClass slideBy nav responsive={{
+                                    0:{
+                                        items:1,
+                                        nav:true
+                                    },
+                                    600:{
+                                        items:1,
+                                        nav:false
+                                    },
+                                    1000:{
+                                        items:1,
+                                        nav:true,
+                                        loop:false
+                                    }
+                                }}>
+                                    {testimonials.map((item, i) => {
+                                    return (
+                                        <div key={i} className="item">
+                                            <div className="testi-monial-sec">
+                                                <p>{striptags(item['acf']['comment'])}</p>
+                                                <div className="testi-icon"> <img src={(item['acf']['image']==='')?'https://picsum.photos/200/300?random='+{i}:item['acf']['image'].toString()} alt=""/> </div>
+                                                <h6>{item['acf']['full_name']}</h6>
+                                                <em>(Posted {item['date'].split('T')[0]})</em>
                                             </div>
-                                        );
-                                        })}
-                                    </OwlCarousel>
-                                </div>
+                                        </div>
+                                    );
+                                    })}
+                                </OwlCarousel>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
         )
     }
 }

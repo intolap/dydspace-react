@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Welcome(props) {
-  const beforAfter = props.data['before_after_images'][Math.floor(Math.random() * props.data['before_after_images'].length)];
-  
+    const beforAfter = props.data['before_after_images'][Math.floor(Math.random() * props.data['before_after_images'].length)];
+
   return (
-    <div>
+    <>
         <section className="features" data-aos="fade-down" data-aos-duration="1000">
             <div className="container">
                 <div className="feature-content feature-content-ai">
@@ -27,9 +27,9 @@ export default function Welcome(props) {
                 </div>
             </div>
             <div className="sales-count-image sales-right-count-image"> 
-                <img src="assets/images/jt-pointer2.png" alt="Image" /> 
+                <img src="assets/images/jt-pointer2.png" alt="" /> 
             </div>
         </section>
-    </div>
+    </>
   )
 }

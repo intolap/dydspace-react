@@ -19,30 +19,29 @@ const formReducer = (state, event) => {
     }
 }
 
-export default function TalkToDesigner2() {
+export default function Comments() {
     const [formData, setFormData] = useReducer(formReducer, {'fid':153});
     const [submitting, setSubmitting] = useState(false);
     const [message, setMessage] = useState();
-    const [messageClass, setMessageClass] = useState();
 
     const handleSubmit = event => {
         event.preventDefault();
         setSubmitting(true);
         setMessage('Submtting Your Details...');
 
-        if(formData['your-name']==''){
+        if(formData['your-name']===''){
             setMessage('<p class="text-danger">Please enter full name!</p>');
             setSubmitting(false);
             return false;
-        }else if(formData['your-email']==''){
+        }else if(formData['your-email']===''){
             setMessage('<p class="text-danger">Please enter email!</p>');
             setSubmitting(false);
             return false;
-        }else if(formData['your-phone']==''){
+        }else if(formData['your-phone']===''){
             setMessage('<p class="text-danger">Please enter phone number!</p>');
             setSubmitting(false);
             return false;
-        }else if(formData['property-type']==''){
+        }else if(formData['property-type']===''){
             setMessage('<p class="text-danger">Please enter property type!</p>');
             setSubmitting(false);
             return false;
@@ -52,12 +51,10 @@ export default function TalkToDesigner2() {
 
         try {
             const fd = JSON.stringify(formData);
-            console.log(fd);
             axios.post('https://dydspace.com/wp-json/dydspace-core/cf7db/', fd)
             .then(res=>{
-                console.log(res);
-                console.log(res.data);
-                
+                // console.log(res);
+                // console.log(res.data);
                 if (res.status === 200) {
                     setFormData({
                         reset: true
@@ -75,18 +72,17 @@ export default function TalkToDesigner2() {
     }
 
     return (
-    <>
-        <section className="features-ct "data-aos="fade-down" data-aos-duration="1000">
-            <div className="container">
-                <div className="row">
-                <div className="designer-std zoomInUp">
-                    <h2>Talk to a designer</h2>
-                    <div className="cont-from">
-                        {submitting &&
-                        <div className="alert alert-primary">{message ? <p>{message}</p> : null}</div>
-                        }
-                        <form onSubmit={handleSubmit}>
-                            <div className="form-row" >
+    <section className="features-ct " data-aos="fade-down" data-aos-duration="1000">
+        <div className="container">
+            <div className="row">
+            <div className="designer-std zoomInUp">
+                <h3>Talk to a designer</h3>
+                <div className="cont-from">
+                    {submitting &&
+                    <div className="alert alert-primary">{message ? <p>{message}</p> : null}</div>
+                    }
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-row" >
                             <div className="col-md-6 mb-4" data-aos="fade-down" data-aos-duration="1000">
                                 <input type="text" name="your-name" className="form-control" placeholder="Enter Full Name" onChange={setFormData} value={formData['your-name'] || ''}></input>
                             </div>
@@ -104,17 +100,16 @@ export default function TalkToDesigner2() {
                                 <label className="form-check-label">
                                     <input type="checkbox" name="whatsapp-optin" value="Send me updates on WhatsApp" onChange={setFormData} checked={formData['whatsapp-optin'] || false}></input>
                                     Send me updates on WhatsApp</label>
-                                <p>By submitting this form, you agree to the <span>privacy</span></p>
+                                <p>By submitting this form, you agree to our <span>privacy policy</span></p>
                                 <button className="btn button-white btn-change8" type="submit" disabled={submitting}>Book Online Consultation</button>
                                 </div>
                             </div>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
-                <a className="down" href="#"></a> </div>
             </div>
-            </section>
-    </>
+            <button className="down"></button> </div>
+        </div>
+    </section>
   )
 }

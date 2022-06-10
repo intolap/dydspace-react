@@ -14,84 +14,22 @@
     <meta name="theme-color" content="#ffffff"> -->
     <!-- Latest compiled and minified CSS -->
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/style2.css" />
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/style.css" />
+    <!-- <link rel="stylesheet" href="assets/css/style2.css" /> -->
     <!-- <link rel="stylesheet" href="assets/css/plugins.css" /> -->
-    <link rel="stylesheet" href="assets/css/responsive.css" />
-    <link rel="stylesheet" href="assets/css/twentytwenty.css" type="text/css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/responsive.css" />
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/twentytwenty.css" type="text/css">
     <!-- <link href="assets/css/owl.carousel.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/owl.theme.default.min.css" rel="stylesheet" type="text/css"> -->
-    <link rel="stylesheet" href="assets/css/fontawesome/css/all.css" />
-    <link href="assets/css/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/fontawesome/css/all.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link href="%PUBLIC_URL%/assets/css/aos.css" rel="stylesheet">
 
 
     <!-- Owl Stylesheets -->
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/js/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <style>
-        .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after,
-        .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
-            content: 'prev';
-            transform: rotate(90deg);
-            color: #000;
-            font-size: 26px !important;
-            font-weight: bold;
-        }
-
-        .swiper-slide {
-            min-height: 650px;
-            height: auto;
-        }
-
-        .swiper-slide img {
-            width: 100%;
-            height: 650px;
-            object-fit: cover;
-        }
-
-        .swiper-button-prev, .swiper-rtl .swiper-button-next {
-            top: 10% !important;
-            right: 10px  !important;
-            left: auto  !important;
-        }
-
-        .swiper-button-next, .swiper-rtl .swiper-button-prev {
-            top: 20% !important;
-        }
-
-        .swiper-pagination{
-            counter-reset: section;
-            width: 45px !important;
-            left: 1303px !important;
-        }
-
-        .swiper-pagination-bullet {
-            display: block !important;
-            border-radius: 0% !important;
-            margin-bottom: 5px !important;
-            width: 50px !important;
-            height: 2px !important;
-            padding: 0px;
-            margin-bottom: 30px !important;
-            background-color: transparent;
-            text-align: left !important;
-            font-weight: normal !important;
-        }
-
-        .swiper-pagination-bullet-active{
-            font-size: 36px;
-        }
-
-        .swiper-pagination-bullet::before {
-            counter-increment: section;
-            content: counter(section);
-        }
-
-        .swiper-pagination-bullet-active {
-            font-weight: bold;
-        }
-    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -107,14 +45,42 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/plugins.js"></script> 
-    <script src="assets/js/scripts.js"></script> 
-    <script src="assets/js/jquery.event.move.js"></script> 
-    <script src="assets/js/jquery.twentytwenty.js"></script> 
-    <script src="assets/js/aos.js"></script> 
-    <script src="assets/js/easy-responsive-tabs.js"></script> 
+    <script src="%PUBLIC_URL%/assets/js/bootstrap.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/js/plugins.js"></script> 
+    <!-- <script src="%PUBLIC_URL%/assets/js/scripts.js"></script>  -->
+    <!-- <script src="%PUBLIC_URL%/assets/js/jquery.event.move.js"></script>  -->
+    <script src="%PUBLIC_URL%/assets/js/jquery.twentytwenty.js"></script> 
+    <script src="%PUBLIC_URL%/assets/js/aos.js"></script> 
+    <script src="%PUBLIC_URL%/assets/js/easy-responsive-tabs.js"></script>
+    <!-- <script src="%PUBLIC_URL%/assets/js/megamenu.js"></script>  -->
     <script>
+        $(document).ready(function() {
+ // executes when HTML-Document is loaded and DOM is ready
+
+// breakpoint and up  
+$(window).resize(function(){
+  if ($(window).width() >= 980){  
+
+      // when you hover a toggle show its dropdown menu
+      $(".navbar .dropdown-toggle").hover(function () {
+         $(this).parent().toggleClass("show");
+         $(this).parent().find(".dropdown-menu").toggleClass("show"); 
+       });
+
+        // hide the menu when the mouse leaves the dropdown
+      $( ".navbar .dropdown-menu" ).mouseleave(function() {
+        $(this).removeClass("show");  
+      });
+  
+    // do something here
+  } 
+});  
+  
+  
+
+// document ready  
+});
+
         $('.counter-count').each(function () {
             $(this).prop('Counter',0).animate({
                 Counter: $(this).text()
@@ -130,6 +96,8 @@
         });
 
         $(window).on("load", function(){
+            // $(".menu > ul").before('<a href="#" class="fa fa-bars">-</a>');
+
             $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
             $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
         

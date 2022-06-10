@@ -4,12 +4,12 @@ export default function WorkProcess(props) {
     // console.log(props.data);
     var striptags = require('striptags');
   return (
-    <div>
+    <>
         <section id="section-steps-4" data-aos="fade-down" data-aos-duration="1000">
             <div className="container">
                 <div className="row justify-content-center">
                 <div className="col-md-7 text-center">
-                    <h2 className="style-5"><span>Our</span> WorkProcess</h2>
+                    <h3 className="style-5"><span>Our</span> WorkProcess</h3>
                 </div>
                 <div className="desktop-dp justify-content-center">
                     <div className="quisque-kl">
@@ -30,12 +30,12 @@ export default function WorkProcess(props) {
                     {props.data['process'].map((item,i) => {
                         return (
                         <div key={i} id={i} className="process-srt">
-                            <h2>{item['bg_title']}</h2>
+                            <h3>{item['bg_title']}</h3>
                             <div className="row">
-                                <div className="col-sm-12 col-mg-6 col-lg-6">
+                                <div className="col-sm-3 col-mg-3 col-lg-3">
                                 <div className="about-us-lft-img"> <img src={item['image'].toString()} alt=""/> </div>
                                 </div>
-                                <div className="col-sm-12 col-mg-6 col-lg-6">
+                                <div className="col-sm-9 col-mg-9 col-lg-9">
                                 <div className="about-inn-text">
                                     <p>{striptags(item['description'])}</p>
                                 </div>
@@ -71,6 +71,6 @@ export default function WorkProcess(props) {
                 </div>
             </div>
         </section>
-    </div>
+    </>
   )
 }
