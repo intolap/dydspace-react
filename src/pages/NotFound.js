@@ -1,4 +1,5 @@
 import React from 'react'
+import Img404 from '../404.png'
 
 export default function NotFound() {
   return (
@@ -11,7 +12,7 @@ export default function NotFound() {
                 </header>
 
                 <div className="page-content text-center">
-                    <img width="400" src="./assets/images/404.png" alt=""/>
+                    <img width="400" src={Img404} alt="Not found"/>
                     <h2 className="page-title text-center">Oops! That page can&rsquo;t be found.</h2>			
                     {/* <p><?php //esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'dydspace' ); ?></p> */}
                 </div>

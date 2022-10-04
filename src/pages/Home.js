@@ -2,6 +2,7 @@ import React, { useState, useEffect, Suspense }  from 'react';
 import { ErrorBoundary } from "react-error-boundary"
 import ErrorFallback from '../globals/ErrorBoundary';
 import Loading from '../globals/Loading';
+import HelmetWrapper from '../globals/HelmetWrapper';
 
 const ResponsiveCarousel = React.lazy(()=>import('./HomeParts/ResponsiveCarousel'))
 const TalkToDesigner = React.lazy(()=>import('./HomeParts/TalkToDesigner'))
@@ -17,7 +18,7 @@ const Brands = React.lazy(()=>import('./HomeParts/Brands'))
 export default function Home() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [acfData, setAcfData] = useState(false);
+  const [data, setData] = useState(false);
 
   useEffect(() => {
       fetch("https://dydspace.com/wp-json/wp/v2/pages/2/?acf_format=standard")
@@ -25,7 +26,7 @@ export default function Home() {
           .then(
               (data) => {
                   setIsLoaded(true);
-                  setAcfData(data['acf']);
+                  setData(data);
                   // console.log(data);
               },
               (error) => {
@@ -47,18 +48,19 @@ export default function Home() {
     // console.log(acfData);
     return (
       <>
+      <HelmetWrapper data={data}/>
       <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => {}}>
         <Suspense fallback={<Loading/>}>
           <ResponsiveCarousel/>
           <TalkToDesigner />
-          <Welcome data={acfData}/>
-          <Cta data={acfData}/>
-          <Stats data={acfData}/>
-          <Creations data={acfData}/>
+          <Welcome data={data['acf']}/>
+          <Cta data={data['acf']}/>
+          <Stats data={data['acf']}/>
+          <Creations data={data['acf']}/>
           <Testimonials />
           {/* <ShopNow /> */}
-          <WorkProcess data={acfData}/>
-          <Brands data={acfData}/>
+          <WorkProcess data={data['acf']}/>
+          <Brands data={data['acf']}/>
         </Suspense>
       </ErrorBoundary>
       </>

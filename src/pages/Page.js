@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Loading from '../globals/Loading';
+import NotFound from './NotFound';
 const InnerBanner = React.lazy(()=>import('../globals/InnerBanner'))
 const TalkToDesigner = React.lazy(()=>import('./HomeParts/TalkToDesigner'))
 
@@ -23,13 +24,17 @@ export default class Page extends Component {
         .then(
             (data) => {
                 console.log(data);
-                /* const slug = window.location.pathname;
-                const currentPage = data.find(e => '/'+e.slug+'/' === slug);
-                console.log(currentPage); */
-                this.setState({
-                    isLoaded: true,
-                    page: data[0]
-                });
+                if(data.length > 0){
+                    this.setState({
+                        isLoaded: true,
+                        page: data[0]
+                    });
+                }else{
+                    this.setState({
+                        isLoaded: true,
+                        page: '404'
+                    });
+                }
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
@@ -47,11 +52,15 @@ export default class Page extends Component {
         const { error, isLoaded, page } = this.state;
         // console.log(page);
         if (error) {
-            console.log(error);
+            // console.log(error);
             return '';
         } else if (!isLoaded) {
             return <Loading />;
         } else {
+            if(this.state.page==='404'){
+                return <NotFound />
+            }
+
             var acfDataStatic = {acf:{page_title:page.acf.page_title,page_subtitle:page.acf.page_subtitle,banner_image:page.acf.banner_image}};
             return (
                 <>
