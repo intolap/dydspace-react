@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/dydspace-react/static/js/main.086a5171.js",
+    "main.js": "/dydspace-react/static/js/main.ae079c9c.js",
     "static/css/709.dbea09dc.chunk.css": "/dydspace-react/static/css/709.dbea09dc.chunk.css",
     "static/js/709.5eb83691.chunk.js": "/dydspace-react/static/js/709.5eb83691.chunk.js",
     "static/js/42.9d0aed5e.chunk.js": "/dydspace-react/static/js/42.9d0aed5e.chunk.js",
@@ -23,12 +23,12 @@
     "static/js/53.dcbe6c85.chunk.js": "/dydspace-react/static/js/53.dcbe6c85.chunk.js",
     "static/js/787.62449090.chunk.js": "/dydspace-react/static/js/787.62449090.chunk.js",
     "static/js/377.daac27b8.chunk.js": "/dydspace-react/static/js/377.daac27b8.chunk.js",
-    "static/js/182.5358bb93.chunk.js": "/dydspace-react/static/js/182.5358bb93.chunk.js",
-    "static/js/752.8f6958fa.chunk.js": "/dydspace-react/static/js/752.8f6958fa.chunk.js",
+    "static/js/182.8dcfb126.chunk.js": "/dydspace-react/static/js/182.8dcfb126.chunk.js",
+    "static/js/752.bb8dff43.chunk.js": "/dydspace-react/static/js/752.bb8dff43.chunk.js",
     "static/media/logo-m.png": "/dydspace-react/static/media/logo-m.8d97bc21b597125a1bf6.png",
     "static/media/footer-logo.png": "/dydspace-react/static/media/footer-logo.cc6847e46cd00cbf0e8d.png",
     "index.html": "/dydspace-react/index.html",
-    "main.086a5171.js.map": "/dydspace-react/static/js/main.086a5171.js.map",
+    "main.ae079c9c.js.map": "/dydspace-react/static/js/main.ae079c9c.js.map",
     "709.dbea09dc.chunk.css.map": "/dydspace-react/static/css/709.dbea09dc.chunk.css.map",
     "709.5eb83691.chunk.js.map": "/dydspace-react/static/js/709.5eb83691.chunk.js.map",
     "42.9d0aed5e.chunk.js.map": "/dydspace-react/static/js/42.9d0aed5e.chunk.js.map",
@@ -51,10 +51,10 @@
     "53.dcbe6c85.chunk.js.map": "/dydspace-react/static/js/53.dcbe6c85.chunk.js.map",
     "787.62449090.chunk.js.map": "/dydspace-react/static/js/787.62449090.chunk.js.map",
     "377.daac27b8.chunk.js.map": "/dydspace-react/static/js/377.daac27b8.chunk.js.map",
-    "182.5358bb93.chunk.js.map": "/dydspace-react/static/js/182.5358bb93.chunk.js.map",
-    "752.8f6958fa.chunk.js.map": "/dydspace-react/static/js/752.8f6958fa.chunk.js.map"
+    "182.8dcfb126.chunk.js.map": "/dydspace-react/static/js/182.8dcfb126.chunk.js.map",
+    "752.bb8dff43.chunk.js.map": "/dydspace-react/static/js/752.bb8dff43.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.086a5171.js"
+    "static/js/main.ae079c9c.js"
   ]
 }
